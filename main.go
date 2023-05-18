@@ -119,29 +119,6 @@ func prettifyPrice(price float64) string {
 	return fmt.Sprintf("$ %.2f", price)
 }
 
-// func addFieldBelowPrice(data map[string]interface{}, key string, parentKey string) {
-// 	newKey := key + "_new"
-// 	if parentKey != "" {
-// 		newKey = parentKey + "." + newKey
-// 	}
-
-// 	for k := range data {
-// 		if k == key {
-// 			// Move the existing field to a temporary key
-// 			data["__temp__"] = data[k]
-// 			delete(data, k)
-// 			break
-// 		}
-// 	}
-
-// 	// Add the new field directly below the "price" field
-// 	data[newKey] = "New value"
-
-// 	// Restore the existing field to its original key
-// 	data[key] = data["__temp__"]
-// 	delete(data, "__temp__")
-// }
-
 func main() {
 	target,_ := url.Parse(baseMessariUrl)
 	backendProxy := httputil.NewSingleHostReverseProxy(target)
@@ -179,6 +156,6 @@ func main() {
 		log.Println("Request to messari took: ", end)		
 	})
 
-	router.Run(":8080")
+	router.Run(":8081")
 
 }
